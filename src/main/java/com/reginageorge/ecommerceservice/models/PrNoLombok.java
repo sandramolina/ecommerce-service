@@ -24,6 +24,7 @@ public class PrNoLombok {
     private Money price;
 
     @Column(name = "ingredients")
+    @ElementCollection(targetClass=Ingredients.class)
     private List<Ingredients> ingredientsLists;
 
     public PrNoLombok() {

@@ -27,6 +27,9 @@ public class Seeds implements ApplicationRunner {
     @Autowired
     PrNoLombokRepository prNoLombokRepository;
 
+    @Autowired
+    IngredientsRepository ingredientsRepository;
+
     public Seeds() {
     }
 
@@ -34,7 +37,12 @@ public class Seeds implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
         PrNoLombok lipBalm = new PrNoLombok("Super balm", Money.parse("GBP 23.87"));
-        //lipBalm.addIngredient("FRAGANCE");
+        Ingredients fragance = new Ingredients("Fragance");
+        Ingredients water = new Ingredients("water");
+        ingredientsRepository.save(fragance);
+        ingredientsRepository.save(water);
+        lipBalm.addIngredient(fragance);
+        lipBalm.addIngredient(water);
         prNoLombokRepository.save(lipBalm);
 //
 //        Product lipstick = Product.builder()
