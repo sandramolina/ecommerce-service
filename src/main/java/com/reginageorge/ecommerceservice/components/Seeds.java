@@ -34,7 +34,7 @@ public class Seeds implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
         PrNoLombok lipBalm = new PrNoLombok("Super balm", Money.parse("GBP 23.87"));
-        lipBalm.addIngredient(IngredientsList.FRAGANCE);
+        lipBalm.addIngredient("FRAGANCE");
         prNoLombokRepository.save(lipBalm);
 //
 //        Product lipstick = Product.builder()

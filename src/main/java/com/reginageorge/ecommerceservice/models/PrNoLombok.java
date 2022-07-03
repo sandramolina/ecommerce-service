@@ -24,7 +24,7 @@ public class PrNoLombok {
     private Money price;
 
     @Column(name = "ingredients")
-    private List<IngredientsList> ingredientsLists;
+    private List<String> ingredientsLists;
 
     public PrNoLombok() {
     }
@@ -59,15 +59,15 @@ public class PrNoLombok {
         this.price = price;
     }
 
-    public List<IngredientsList> getIngredientsLists() {
+    public List<String> getIngredientsLists() {
         return ingredientsLists;
     }
 
-    public void setIngredientsLists(List<IngredientsList> ingredientsLists) {
+    public void setIngredientsLists(List<String> ingredientsLists) {
         this.ingredientsLists = ingredientsLists;
     }
 
-        public void addIngredient(IngredientsList ingredient){
+        public void addIngredient(String  ingredient){
         this.ingredientsLists.add(ingredient);
     }
 }
