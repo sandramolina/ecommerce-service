@@ -32,7 +32,7 @@ public class PrNoLombok {
     public PrNoLombok(String title, Money price) {
         this.title = title;
         this.price = price;
-        this.ingredientsLists = new ArrayList<>();
+        this.ingredientsLists = new ArrayList<String>();
     }
 
     public Long getId() {
