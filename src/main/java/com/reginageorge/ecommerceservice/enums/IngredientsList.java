@@ -1,6 +1,6 @@
 package com.reginageorge.ecommerceservice.enums;
 
-public enum notuse {
+public enum IngredientsList {
     WATER(true, false),
     FRAGANCE(false, true),
     OILS(true, false);
@@ -8,7 +8,7 @@ public enum notuse {
     private final boolean isVegan;
     private final boolean isComedogenic;
 
-    notuse(boolean isVegan, boolean isComedogenic) {
+    IngredientsList(boolean isVegan, boolean isComedogenic) {
         this.isVegan = isVegan;
         this.isComedogenic = isComedogenic;
     }
