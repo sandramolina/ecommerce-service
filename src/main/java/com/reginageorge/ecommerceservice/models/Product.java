@@ -51,17 +51,6 @@ public class Product {
     @Column(name = "rate_count")
     private int rate_count;
 
-    //TODO transform this so it used the enum Ingredients instead of the class
-    @ManyToMany
-    @JsonIgnoreProperties({"products"})
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinTable(
-            name = "ingredients_products",
-            joinColumns = {@JoinColumn(name = "product_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name="ingredient_id", nullable = false, updatable = false)}
-    )
-    private List<Ingredients> ingredients;
-
     public Product() {
     }
 
