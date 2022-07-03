@@ -24,7 +24,7 @@ public class PrNoLombok {
     private Money price;
 
     @Column(name = "ingredients")
-    private List<IngredientsList> ingredientsLists;
+    private List<Ingredients> ingredientsLists;
 
     public PrNoLombok() {
     }
@@ -32,7 +32,7 @@ public class PrNoLombok {
     public PrNoLombok(String title, Money price) {
         this.title = title;
         this.price = price;
-        this.ingredientsLists = new ArrayList<IngredientsList>();
+        this.ingredientsLists = new ArrayList<Ingredients>();
     }
 
     public Long getId() {
@@ -59,15 +59,15 @@ public class PrNoLombok {
         this.price = price;
     }
 
-    public List<IngredientsList> getIngredientsLists() {
+    public List<Ingredients> getIngredientsLists() {
         return ingredientsLists;
     }
 
-    public void setIngredientsLists(List<IngredientsList> ingredientsLists) {
+    public void setIngredientsLists(List<Ingredients> ingredientsLists) {
         this.ingredientsLists = ingredientsLists;
     }
 
-        public void addIngredient(IngredientsList  ingredient){
+        public void addIngredient(Ingredients  ingredient){
         this.ingredientsLists.add(ingredient);
     }
 }
