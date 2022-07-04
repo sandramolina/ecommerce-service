@@ -18,12 +18,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class Seeds implements ApplicationRunner {
 
-//    @Autowired
-//    ProductRepository productRepository;
-//
-//    @Autowired
-//    IngredientsRepository ingredientsRepository;
-
     @Autowired
     PrNoLombokRepository prNoLombokRepository;
 
@@ -36,33 +30,34 @@ public class Seeds implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
 
-        PrNoLombok lipBalm = new PrNoLombok("Super balm", Money.parse("GBP 23.87"));
-        Ingredients fragance = new Ingredients("Fragance");
-        Ingredients water = new Ingredients("water");
-        ingredientsRepository.save(fragance);
+        PrNoLombok lipGloss = new PrNoLombok("Super Lip Gloss", Money.parse("GBP 13.87"),550);
+        lipGloss.setProductCategory("LIPS");
+        lipGloss.setImage("https://raw.githubusercontent.com/sandramolina/rick-and-morty-app/main/public/not_found.png");
+        lipGloss.setShortDescription("Our #1 gloss—now with pure, creamy color and incredible shine. Lips are instantly smoother and more voluminous-looking.");
+        lipGloss.setLongDescription("Your favorite feel-good, look-great lip gloss, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades");
+        lipGloss.addColour("Passion Red");
+        lipGloss.addColour("Ruby Woo");
+        lipGloss.addColour("Emerald");
+        Ingredients fragrance = new Ingredients("Fragrance");
+        Ingredients water = new Ingredients("Water");
+        ingredientsRepository.save(fragrance);
         ingredientsRepository.save(water);
-        lipBalm.addIngredient(fragance);
-        lipBalm.addIngredient(water);
-        prNoLombokRepository.save(lipBalm);
-//
-//        Product lipstick = Product.builder()
-//                .title("Super Bomb Lips")
-//                .price(Money.parse("GBP 23.87"))
-//                .productCategory("Lips")
-//                .image("https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg")
-//                .shortDescription("This is the short one")
-//                .longDescription("This is the long one")
-//                .rating(4.5)
-//                .rate_count(150)
-//                .build();
-        //lipstick.addColor("Red");
-        //productRepository.save(lipstick);
-        //Ingredients fragance = new Ingredients("Fragance");
-        //ingredientsRepository.save(fragance);
-        //fragance.addProduct(lipstick);
-        //ingredientsRepository.save(fragance);
-        //lipstick.addIngredient(fragance);
-        //productRepository.save(lipstick);
+        lipGloss.addIngredient(fragrance);
+        lipGloss.addIngredient(water);
+        prNoLombokRepository.save(lipGloss);
+
+        PrNoLombok superLipGloss = new PrNoLombok("Super Lip Gloss STAR", Money.parse("GBP 18.99"),650);
+        superLipGloss.setProductCategory("LIPS");
+        superLipGloss.setImage("https://cdn.shopify.com/s/files/1/0341/3458/9485/products/FB_HOL2021_I_T2PRODUCT_CONCRETE_GLOSS_BOMB_HEAT_CLOSED_LAVENDER_SAVAGE_1200x1500_d9cf3fcb-3888-4bf9-8ce8-a333017a95cc.jpg?v=1646689585");
+        superLipGloss.setShortDescription("Our #1 gloss—now with pure, creamy color and incredible shine. Lips are instantly smoother and more voluminous-looking.");
+        superLipGloss.setLongDescription("Your favorite feel-good, look-great lip gloss, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades");
+        superLipGloss.addColour("Passion Red");
+        superLipGloss.addColour("Ruby Woo");
+        superLipGloss.addColour("Emerald");
+        Ingredients oil = new Ingredients("oil");
+        ingredientsRepository.save(oil);
+        superLipGloss.addIngredient(oil);
+        prNoLombokRepository.save(superLipGloss);
 
     }
 }
