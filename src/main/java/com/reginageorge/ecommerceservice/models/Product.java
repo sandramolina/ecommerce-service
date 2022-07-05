@@ -2,10 +2,7 @@ package com.reginageorge.ecommerceservice.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Singular;
+import lombok.*;
 import org.hibernate.annotations.Cascade;
 import org.joda.money.Money;
 
@@ -15,8 +12,10 @@ import java.util.List;
 @Entity
 @Table(name = "products")
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-@Data
+@Getter
+@Setter
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,16 +50,18 @@ public class Product {
     @Column(name = "rate_count")
     private int rate_count;
 
-    public Product() {
-    }
+    //TODO transform this so it used the enum Ingredients instead of the class
+    @Column(name = "ingredient_list")
+    @ElementCollection(targetClass=Ingredients.class)
+    private List<Ingredients> ingredients;
 
     //TODO Make this use the enum colors
 //    @Column(name = "colors")
 //    private List<String> colors;
 
-//    public void addIngredient(Ingredients ingredient){
-//        this.ingredients.add(ingredient);
-//    }
+    public void addIngredient(Ingredients ingredient){
+        this.ingredients.add(ingredient);
+    }
 
 //    public void addColor(String color){
 //        this.colors.add(color);

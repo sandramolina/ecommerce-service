@@ -14,6 +14,11 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import java.util.ArrayList;
+import java.util.List;
+
 @Profile("!test")
 @Component
 public class Seeds implements ApplicationRunner {
@@ -58,6 +63,28 @@ public class Seeds implements ApplicationRunner {
         ingredientsRepository.save(oil);
         superLipGloss.addIngredient(oil);
         prNoLombokRepository.save(superLipGloss);
+
+        Product lipstick = Product.builder()
+                .title("Super Bomb Lips")
+                .price(Money.parse("GBP 23.87"))
+                .productCategory("Lips")
+                .image("https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg")
+                .shortDescription("This is the short one")
+                .longDescription("This is the long one")
+                .rating(4.5)
+                .rate_count(150)
+                .ingredients(new ArrayList<>())
+                .build();
+
+        //lipstick.addColor("Red");
+        productRepository.save(lipstick);
+        Ingredients fragance = new Ingredients("Fragance");
+        ingredientsRepository.save(fragance);
+        //fragance.addProduct(lipstick);
+        ingredientsRepository.save(fragance);
+        lipstick.addIngredient(fragance);
+        productRepository.save(lipstick);
+
 
     }
 }
