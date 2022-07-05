@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import java.util.ArrayList;
 import java.util.List;
 
 @Profile("!test")
@@ -40,7 +41,9 @@ public class Seeds implements ApplicationRunner {
                 .longDescription("This is the long one")
                 .rating(4.5)
                 .rate_count(150)
+                .ingredients(new ArrayList<>())
                 .build();
+
         //lipstick.addColor("Red");
         productRepository.save(lipstick);
         Ingredients fragance = new Ingredients("Fragance");
