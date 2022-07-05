@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Profile("!test")
-@Component
+//@Component
 public class Seeds implements ApplicationRunner {
 
     @Autowired
