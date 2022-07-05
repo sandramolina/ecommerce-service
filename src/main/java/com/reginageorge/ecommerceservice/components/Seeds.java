@@ -11,6 +11,11 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import java.util.ArrayList;
+import java.util.List;
+
 @Profile("!test")
 @Component
 public class Seeds implements ApplicationRunner {
@@ -36,15 +41,17 @@ public class Seeds implements ApplicationRunner {
                 .longDescription("This is the long one")
                 .rating(4.5)
                 .rate_count(150)
+                .ingredients(new ArrayList<>())
                 .build();
+
         //lipstick.addColor("Red");
         productRepository.save(lipstick);
-        //Ingredients fragance = new Ingredients("Fragance");
-        //ingredientsRepository.save(fragance);
+        Ingredients fragance = new Ingredients("Fragance");
+        ingredientsRepository.save(fragance);
         //fragance.addProduct(lipstick);
-        //ingredientsRepository.save(fragance);
-        //lipstick.addIngredient(fragance);
-        //productRepository.save(lipstick);
+        ingredientsRepository.save(fragance);
+        lipstick.addIngredient(fragance);
+        productRepository.save(lipstick);
 
     }
 }
