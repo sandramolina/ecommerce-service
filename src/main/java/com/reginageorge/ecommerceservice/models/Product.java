@@ -1,9 +1,7 @@
 package com.reginageorge.ecommerceservice.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 import org.joda.money.Money;
 
 import javax.persistence.*;
@@ -26,6 +24,10 @@ public class Product {
     private String title;
 
     @NotNull
+    @Column(name = "stock")
+    private int stock;
+
+    @NotNull
     @Column(name = "price")
     private Money price;
 
@@ -43,27 +45,22 @@ public class Product {
     @Column(name = "long_description")
     private String longDescription;
 
-    //TODO Transform Raiting and RateCount into an object
-    @Column(name = "rating")
+    //TODO Rating class with rate and count
+   @Column(name = "rating")
     private double rating;
 
-    @Column(name = "rate_count")
-    private int rate_count;
-
-    //TODO transform this so it used the enum Ingredients instead of the class
     @Column(name = "ingredient_list")
     @ElementCollection(targetClass=Ingredients.class)
     private List<Ingredients> ingredients;
 
-    //TODO Make this use the enum colors
-//    @Column(name = "colors")
-//    private List<String> colors;
+    //TODO need to transform into Color Class with name and image- investigate color API ask stuart
+    @Column(name = "colours")
+    @ElementCollection(targetClass=String.class)
+    private List<String> colours;
 
     public void addIngredient(Ingredients ingredient){
         this.ingredients.add(ingredient);
     }
 
-//    public void addColor(String color){
-//        this.colors.add(color);
-//    }
+    public void addColour(String colour){this.colours.add(colour);}
 }
