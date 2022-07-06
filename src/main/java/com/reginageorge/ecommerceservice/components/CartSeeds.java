@@ -46,7 +46,7 @@ public class CartSeeds implements ApplicationRunner {
 
         CartItem cartItem = CartItem.builder()
                 .product(new Product())
-                .cartCount(2)
+                .count(2)
                 .build();
         cartItem.setProduct(superLipGloss);
         cartItemsRepository.save(cartItem);
