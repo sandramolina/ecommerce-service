@@ -53,14 +53,13 @@ public class Product {
     @ElementCollection(targetClass=Ingredients.class)
     private List<Ingredients> ingredients;
 
-    //TODO need to transform into Color Class with name and image- investigate color API ask stuart
     @Column(name = "colours")
-    @ElementCollection(targetClass=String.class)
-    private List<String> colours;
+    @ElementCollection(targetClass=Colours.class)
+    private List<Colours> colours;
 
     public void addIngredient(Ingredients ingredient){
         this.ingredients.add(ingredient);
     }
 
-    public void addColour(String colour){this.colours.add(colour);}
+    public void addColour(Colours colour){this.colours.add(colour);}
 }
