@@ -1,5 +1,6 @@
 package com.reginageorge.ecommerceservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.joda.money.Money;
@@ -17,6 +18,7 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @NotNull
@@ -45,9 +47,10 @@ public class Product {
     @Column(name = "long_description")
     private String longDescription;
 
-    //TODO Rating class with rate and count
-   @Column(name = "rating")
-    private double rating;
+    @JsonIgnoreProperties({"product"})
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "rating_id", referencedColumnName = "id")
+    private Rating rating;
 
     @Column(name = "ingredient_list")
     @ElementCollection(targetClass=Ingredients.class)
@@ -62,4 +65,5 @@ public class Product {
     }
 
     public void addColour(Colours colour){this.colours.add(colour);}
+
 }

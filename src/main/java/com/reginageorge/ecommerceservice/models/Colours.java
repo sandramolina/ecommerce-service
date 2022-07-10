@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Colours {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ingredient_id;
+    private Long colour_id;
 
     private String colourName;
 
@@ -21,12 +21,12 @@ public class Colours {
         this.colourImage = colourImage;
     }
 
-    public Long getIngredient_id() {
-        return ingredient_id;
+    public Long getColour_id() {
+        return colour_id;
     }
 
-    public void setIngredient_id(Long ingredient_id) {
-        this.ingredient_id = ingredient_id;
+    public void setColour_id(Long colour_id) {
+        this.colour_id = colour_id;
     }
 
     public String getColourName() {

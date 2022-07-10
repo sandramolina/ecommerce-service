@@ -3,9 +3,11 @@ package com.reginageorge.ecommerceservice.components;
 import com.reginageorge.ecommerceservice.models.Colours;
 import com.reginageorge.ecommerceservice.models.Ingredients;
 import com.reginageorge.ecommerceservice.models.Product;
+import com.reginageorge.ecommerceservice.models.Rating;
 import com.reginageorge.ecommerceservice.repositories.ColoursRepository;
 import com.reginageorge.ecommerceservice.repositories.IngredientsRepository;
 import com.reginageorge.ecommerceservice.repositories.ProductRepository;
+import com.reginageorge.ecommerceservice.repositories.RatingsRepository;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -28,11 +30,19 @@ public class Seeds implements ApplicationRunner {
     @Autowired
     ColoursRepository coloursRepository;
 
+    @Autowired
+    RatingsRepository ratingsRepository;
+
     public Seeds() {
     }
 
     @Override
     public void run(ApplicationArguments args) {
+
+        Rating rating1 = new Rating(4.5, 4500);
+        ratingsRepository.save(rating1);
+        Rating rating2 = new Rating(3.5, 600);
+        ratingsRepository.save(rating2);
 
         Product superLipGloss = Product.builder()
                 .title("Super Lip Gloss STAR")
@@ -42,12 +52,16 @@ public class Seeds implements ApplicationRunner {
                 .image("https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg")
                 .shortDescription("This is the short one")
                 .longDescription("This is the long one")
-                .rating(4.5)
+                .rating(new Rating())
                 .ingredients(new ArrayList<>())
                 .colours(new ArrayList<>())
                 .build();
 
+
         productRepository.save(superLipGloss);
+        superLipGloss.setRating(rating1);
+        productRepository.save(superLipGloss);
+
 
         Product lipstick = Product.builder()
                 .title("Super Bomb Lips")
@@ -57,7 +71,7 @@ public class Seeds implements ApplicationRunner {
                 .image("https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg")
                 .shortDescription("This is the short one")
                 .longDescription("This is the long one")
-                .rating(4.5)
+                .rating(new Rating())
                 .ingredients(new ArrayList<>())
                 .colours(new ArrayList<>())
                 .build();
