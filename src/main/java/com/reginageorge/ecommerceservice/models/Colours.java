@@ -16,6 +16,7 @@ public class Colours {
     public Colours() {
     }
 
+    //TODO how to setup a default value
     public Colours(String colourName, String colourImage) {
         this.colourName = colourName;
         this.colourImage = colourImage;

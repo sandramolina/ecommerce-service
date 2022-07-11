@@ -39,51 +39,73 @@ public class Seeds implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
 
+        //Generate Ratings
         Rating rating1 = new Rating(4.5, 4500);
         ratingsRepository.save(rating1);
+
         Rating rating2 = new Rating(3.5, 600);
         ratingsRepository.save(rating2);
 
-        Product superLipGloss = Product.builder()
-                .title("Super Lip Gloss STAR")
+        Rating rating3 = new Rating(5.0, 600);
+        ratingsRepository.save(rating3);
+
+        //Generate Colours
+        Colours red1 = new Colours("Passion Red", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-red.png");
+        coloursRepository.save(red1);
+
+        Colours blue1 = new Colours("React Blue", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-react-blue.png");
+        coloursRepository.save(blue1);
+
+        Colours green1 = new Colours("Emerald", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-emerald.png");
+        coloursRepository.save(green1);
+
+        //Generate Ingredients
+        Ingredients fragrance = new Ingredients("Fragrance");
+        ingredientsRepository.save(fragrance);
+
+        Ingredients arganOil = new Ingredients("Argan Oil");
+        ingredientsRepository.save(arganOil);
+
+        Ingredients water = new Ingredients("Water");
+        ingredientsRepository.save(water);
+
+        Product superLipstickStar = Product.builder()
+                .title("Super Lipstick STAR")
                 .stock(5600)
                 .price(Money.parse("GBP 18.99"))
                 .productCategory("LIPS")
-                .image("https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg")
-                .shortDescription("This is the short one")
-                .longDescription("This is the long one")
+                .image("https://raw.githubusercontent.com/sandramolina/assets/main/products/lipBalm.png")
+                .shortDescription("Our #1 lipstick now with pure, creamy color and incredible shine. Lips are instantly smoother and more voluminous-looking.")
+                .longDescription("Your favorite feel-good, look-great lipstick, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades")
                 .rating(new Rating())
                 .ingredients(new ArrayList<>())
                 .colours(new ArrayList<>())
                 .build();
 
 
-        productRepository.save(superLipGloss);
-        superLipGloss.setRating(rating1);
-        productRepository.save(superLipGloss);
+        productRepository.save(superLipstickStar);
+        superLipstickStar.setRating(rating1);
+        superLipstickStar.addIngredient(fragrance);
+        superLipstickStar.addColour(red1);
+        superLipstickStar.addColour(blue1);
+        superLipstickStar.addColour(green1);
+        productRepository.save(superLipstickStar);
 
 
-        Product lipstick = Product.builder()
-                .title("Super Bomb Lips")
-                .stock(600)
-                .price(Money.parse("GBP 23.87"))
-                .productCategory("LIPS")
-                .image("https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg")
-                .shortDescription("This is the short one")
-                .longDescription("This is the long one")
-                .rating(new Rating())
-                .ingredients(new ArrayList<>())
-                .colours(new ArrayList<>())
-                .build();
-
-        productRepository.save(lipstick);
-        Colours red1 = new Colours("Passion Red", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-red.png");
-        coloursRepository.save(red1);
-        lipstick.addColour(red1);
-        Ingredients fragance = new Ingredients("Fragance");
-        ingredientsRepository.save(fragance);
-        lipstick.addIngredient(fragance);
-        productRepository.save(lipstick);
+//        Product lipstick = Product.builder()
+//                .title("Super Bomb Lips")
+//                .stock(600)
+//                .price(Money.parse("GBP 23.87"))
+//                .productCategory("LIPS")
+//                .image("https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg")
+//                .shortDescription("This is the short one")
+//                .longDescription("This is the long one")
+//                .rating(new Rating())
+//                .ingredients(new ArrayList<>())
+//                .colours(new ArrayList<>())
+//                .build();
+//
+//        productRepository.save(lipstick);
 
 
     }
