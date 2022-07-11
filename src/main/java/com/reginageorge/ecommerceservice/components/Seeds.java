@@ -83,6 +83,14 @@ public class Seeds implements ApplicationRunner {
         Colours getNude = new Colours("Get Nude", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-getnude.png");
         coloursRepository.save(getNude);
 
+        //TODO assign img to black
+        Colours black = new Colours("Carbon Black", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-getnude.png");
+        coloursRepository.save(black);
+
+        //TODO assign img to brown
+        Colours brown = new Colours("Brownie", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-getnude.png");
+        coloursRepository.save(brown);
+
         //Generate Ingredients
         Ingredients fragrance = new Ingredients("Fragrance");
         ingredientsRepository.save(fragrance);
@@ -146,7 +154,7 @@ public class Seeds implements ApplicationRunner {
                 .colours(new ArrayList<>())
                 .build();
 
-
+        //TODO how can I setup the same ingredient/color to different products
         productRepository.save(superLipstickSoDramatic);
         superLipstickSoDramatic.setRating(rating2);
         superLipstickSoDramatic.addIngredient(water);
@@ -156,6 +164,106 @@ public class Seeds implements ApplicationRunner {
         superLipstickSoDramatic.addColour(rosyMauve);
         productRepository.save(superLipstickSoDramatic);
 
+        Product superMascara = Product.builder()
+                .title("Super Mascara STAR")
+                .stock(1000)
+                .price(Money.parse("GBP 10.55"))
+                .productCategory("EYES")
+                .image("https://github.com/sandramolina/assets/blob/main/products/mascara.png")
+                .shortDescription("Our #1 mascara now with pure, creamy color and incredible shine. Lips are instantly smoother and more voluminous-looking.")
+                .longDescription("Your favorite feel-good, look-great mascara, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades")
+                .rating(new Rating())
+                .ingredients(new ArrayList<>())
+                .colours(new ArrayList<>())
+                .build();
+
+                //TODO once I fix the issue, assign colors and ingredients
+        productRepository.save(superMascara);
+
+        //TODO assign img to this product
+        Product superEyeshadow = Product.builder()
+                .title("Super Eyeshadow Palette")
+                .stock(1000)
+                .price(Money.parse("GBP 15.99"))
+                .productCategory("EYES")
+                .image("https://github.com/sandramolina/assets/blob/main/products/mascara.png")
+                .shortDescription("Our brand new Eyeshadow now with pure, creamy color and incredible shine. Eyes are instantly smoother and more voluminous-looking.")
+                .longDescription("Your favorite feel-good, look-great eyeshadow, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades")
+                .rating(new Rating())
+                .ingredients(new ArrayList<>())
+                .colours(new ArrayList<>())
+                .build();
+
+        //TODO once I fix the issue, assign colors and ingredients
+        productRepository.save(superEyeshadow);
+
+        //TODO assign img to this product
+        Product faceFoundation = Product.builder()
+                .title("Flawless Foundation")
+                .stock(1000)
+                .price(Money.parse("GBP 50.99"))
+                .productCategory("FACE")
+                .image("https://github.com/sandramolina/assets/blob/main/products/mascara.png")
+                .shortDescription("Looking flawless babe")
+                .longDescription("Your favorite feel-good, look-great eyeshadow, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades")
+                .rating(new Rating())
+                .ingredients(new ArrayList<>())
+                .colours(new ArrayList<>())
+                .build();
+
+        //TODO once I fix the issue, assign colors and ingredients
+        productRepository.save(faceFoundation);
+
+        //TODO assign img to this product
+        Product concealer = Product.builder()
+                .title("Flawless Concealer")
+                .stock(1000)
+                .price(Money.parse("GBP 50.99"))
+                .productCategory("FACE")
+                .image("https://github.com/sandramolina/assets/blob/main/products/mascara.png")
+                .shortDescription("Looking flawless babe but under the eyes")
+                .longDescription("Your favorite feel-good, look-great concealer, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades")
+                .rating(new Rating())
+                .ingredients(new ArrayList<>())
+                .colours(new ArrayList<>())
+                .build();
+
+        //TODO once I fix the issue, assign colors and ingredients
+        productRepository.save(concealer);
+
+        //TODO assign img to this product
+        Product nailColor = Product.builder()
+                .title("Flawless Nail Color")
+                .stock(1000)
+                .price(Money.parse("GBP 9.99"))
+                .productCategory("NAILS")
+                .image("https://github.com/sandramolina/assets/blob/main/products/mascara.png")
+                .shortDescription("Looking flawless babe but on the nails")
+                .longDescription("Your favorite feel-good, look-great nail color, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades")
+                .rating(new Rating())
+                .ingredients(new ArrayList<>())
+                .colours(new ArrayList<>())
+                .build();
+
+        //TODO once I fix the issue, assign colors and ingredients
+        productRepository.save(nailColor);
+
+        //TODO assign img to this product
+        Product nailAccesory = Product.builder()
+                .title("Nail Clipper")
+                .stock(1000)
+                .price(Money.parse("GBP 7.99"))
+                .productCategory("NAILS")
+                .image("https://github.com/sandramolina/assets/blob/main/products/mascara.png")
+                .shortDescription("Looking flawless babe but on the nails")
+                .longDescription("Your favorite feel-good, look-great nail clipper, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades")
+                .rating(new Rating())
+                .ingredients(new ArrayList<>())
+                .colours(new ArrayList<>())
+                .build();
+
+        //TODO once I fix the issue, assign colors and ingredients
+        productRepository.save(nailAccesory);
 
     }
 }
