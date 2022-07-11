@@ -22,14 +22,6 @@ public class Colours {
         this.colourImage = colourImage;
     }
 
-    public Long getColour_id() {
-        return colour_id;
-    }
-
-    public void setColour_id(Long colour_id) {
-        this.colour_id = colour_id;
-    }
-
     public String getColourName() {
         return colourName;
     }
