@@ -1,9 +1,13 @@
 package com.reginageorge.ecommerceservice.components;
 
+import com.reginageorge.ecommerceservice.models.Colours;
 import com.reginageorge.ecommerceservice.models.Ingredients;
 import com.reginageorge.ecommerceservice.models.Product;
+import com.reginageorge.ecommerceservice.models.Rating;
+import com.reginageorge.ecommerceservice.repositories.ColoursRepository;
 import com.reginageorge.ecommerceservice.repositories.IngredientsRepository;
 import com.reginageorge.ecommerceservice.repositories.ProductRepository;
+import com.reginageorge.ecommerceservice.repositories.RatingsRepository;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -14,7 +18,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Profile("!test")
-//@Component
+@Component
 public class Seeds implements ApplicationRunner {
 
     @Autowired
@@ -23,75 +27,134 @@ public class Seeds implements ApplicationRunner {
     @Autowired
     IngredientsRepository ingredientsRepository;
 
+    @Autowired
+    ColoursRepository coloursRepository;
+
+    @Autowired
+    RatingsRepository ratingsRepository;
+
     public Seeds() {
     }
 
     @Override
     public void run(ApplicationArguments args) {
 
-//        PrNoLombok lipGloss = new PrNoLombok("Super Lip Gloss", Money.parse("GBP 13.87"),550);
-//        lipGloss.setProductCategory("LIPS");
-//        lipGloss.setImage("https://raw.githubusercontent.com/sandramolina/rick-and-morty-app/main/public/not_found.png");
-//        lipGloss.setShortDescription("Our #1 gloss—now with pure, creamy color and incredible shine. Lips are instantly smoother and more voluminous-looking.");
-//        lipGloss.setLongDescription("Your favorite feel-good, look-great lip gloss, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades");
-//        lipGloss.addColour("Passion Red");
-//        lipGloss.addColour("Ruby Woo");
-//        lipGloss.addColour("Emerald");
-//        Ingredients fragrance = new Ingredients("Fragrance");
-//        Ingredients water = new Ingredients("Water");
-//        ingredientsRepository.save(fragrance);
-//        ingredientsRepository.save(water);
-//        lipGloss.addIngredient(fragrance);
-//        lipGloss.addIngredient(water);
-//        prNoLombokRepository.save(lipGloss);
-//
-//        PrNoLombok superLipGloss = new PrNoLombok("", Money.parse("GBP 18.99"),650);
-//        superLipGloss.setProductCategory("LIPS");
-//        superLipGloss.setImage("https://cdn.shopify.com/s/files/1/0341/3458/9485/products/FB_HOL2021_I_T2PRODUCT_CONCRETE_GLOSS_BOMB_HEAT_CLOSED_LAVENDER_SAVAGE_1200x1500_d9cf3fcb-3888-4bf9-8ce8-a333017a95cc.jpg?v=1646689585");
-//        superLipGloss.setShortDescription("Our #1 gloss—now with pure, creamy color and incredible shine. Lips are instantly smoother and more voluminous-looking.");
-//        superLipGloss.setLongDescription("Your favorite feel-good, look-great lip gloss, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades");
-//        superLipGloss.addColour("Passion Red");
-//        superLipGloss.addColour("Ruby Woo");
-//        superLipGloss.addColour("Emerald");
-//        Ingredients oil = new Ingredients("oil");
-//        ingredientsRepository.save(oil);
-//        superLipGloss.addIngredient(oil);
-//        prNoLombokRepository.save(superLipGloss);
+        //Generate Ratings
+        Rating rating1 = new Rating(4.5, 4500);
+        ratingsRepository.save(rating1);
 
-        Product superLipGloss = Product.builder()
-                .title("Super Lip Gloss STAR")
+        Rating rating2 = new Rating(3.5, 600);
+        ratingsRepository.save(rating2);
+
+        Rating rating3 = new Rating(3.8, 600);
+        ratingsRepository.save(rating3);
+
+        Rating rating4 = new Rating(4.5, 1200);
+        ratingsRepository.save(rating3);
+
+        Rating rating5 = new Rating(2.5, 869);
+        ratingsRepository.save(rating3);
+
+        Rating rating6 = new Rating(3.5, 362);
+        ratingsRepository.save(rating3);
+
+        Rating rating7 = new Rating(4.5, 58);
+        ratingsRepository.save(rating3);
+
+        Rating rating8 = new Rating(5.0, 458);
+        ratingsRepository.save(rating3);
+
+        //Generate Colours
+        Colours red1 = new Colours("Passion Red", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-red.png");
+        coloursRepository.save(red1);
+
+        Colours blue1 = new Colours("React Blue", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-react-blue.png");
+        coloursRepository.save(blue1);
+
+        Colours green1 = new Colours("Emerald", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-emerald.png");
+        coloursRepository.save(green1);
+
+        Colours rosyMauve = new Colours("Rosy Mauve", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-rosy-maeve.png");
+        coloursRepository.save(rosyMauve);
+
+        Colours hotPink = new Colours("Hot Pink", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-hot-pink.png");
+        coloursRepository.save(hotPink);
+
+        Colours getNude = new Colours("Get Nude", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-getnude.png");
+        coloursRepository.save(getNude);
+
+        //Generate Ingredients
+        Ingredients fragrance = new Ingredients("Fragrance");
+        ingredientsRepository.save(fragrance);
+
+        Ingredients arganOil = new Ingredients("Argan Oil");
+        ingredientsRepository.save(arganOil);
+
+        Ingredients water = new Ingredients("Water");
+        ingredientsRepository.save(water);
+
+        Ingredients polybutene = new Ingredients("Polybutene");
+        ingredientsRepository.save(polybutene);
+
+        Ingredients diisostearyl = new Ingredients("Diisostearyl");
+        ingredientsRepository.save(diisostearyl);
+
+        Ingredients silica = new Ingredients("Silica");
+        ingredientsRepository.save(silica);
+
+        Ingredients cetearyl_alcohol = new Ingredients("Cetearyl Alcohol");
+        ingredientsRepository.save(cetearyl_alcohol);
+
+        Ingredients malate = new Ingredients("Malate");
+        ingredientsRepository.save(malate);
+
+
+        Product superLipstickStar = Product.builder()
+                .title("Super Lipstick STAR")
                 .stock(5600)
                 .price(Money.parse("GBP 18.99"))
                 .productCategory("LIPS")
-                .image("https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg")
-                .shortDescription("This is the short one")
-                .longDescription("This is the long one")
-                .rating(4.5)
+                .image("https://raw.githubusercontent.com/sandramolina/assets/main/products/lipBalm.png")
+                .shortDescription("Our #1 lipstick now with pure, creamy color and incredible shine. Lips are instantly smoother and more voluminous-looking.")
+                .longDescription("Your favorite feel-good, look-great lipstick, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades")
+                .rating(new Rating())
                 .ingredients(new ArrayList<>())
                 .colours(new ArrayList<>())
                 .build();
 
-        productRepository.save(superLipGloss);
 
-        Product lipstick = Product.builder()
-                .title("Super Bomb Lips")
-                .stock(600)
-                .price(Money.parse("GBP 23.87"))
+        productRepository.save(superLipstickStar);
+        superLipstickStar.setRating(rating1);
+        superLipstickStar.addIngredient(fragrance);
+        superLipstickStar.addIngredient(silica);
+        superLipstickStar.addIngredient(malate);
+        superLipstickStar.addColour(red1);
+        superLipstickStar.addColour(blue1);
+        superLipstickStar.addColour(green1);
+        productRepository.save(superLipstickStar);
+
+        Product superLipstickSoDramatic = Product.builder()
+                .title("Super Lipstick SO Dramatic!")
+                .stock(1000)
+                .price(Money.parse("GBP 13.55"))
                 .productCategory("LIPS")
-                .image("https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg")
-                .shortDescription("This is the short one")
-                .longDescription("This is the long one")
-                .rating(4.5)
+                .image("https://raw.githubusercontent.com/sandramolina/assets/main/products/lipstick_01.png")
+                .shortDescription("Our #1 lipstick now with pure, creamy color and incredible shine. Lips are instantly smoother and more voluminous-looking.")
+                .longDescription("Your favorite feel-good, look-great lipstick, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades")
+                .rating(new Rating())
                 .ingredients(new ArrayList<>())
                 .colours(new ArrayList<>())
                 .build();
 
-        productRepository.save(lipstick);
-        lipstick.addColour("Red");
-        Ingredients fragance = new Ingredients("Fragance");
-        ingredientsRepository.save(fragance);
-        lipstick.addIngredient(fragance);
-        productRepository.save(lipstick);
+
+        productRepository.save(superLipstickSoDramatic);
+        superLipstickSoDramatic.setRating(rating2);
+        superLipstickSoDramatic.addIngredient(water);
+        superLipstickSoDramatic.addIngredient(cetearyl_alcohol);
+        superLipstickSoDramatic.addColour(hotPink);
+        superLipstickSoDramatic.addColour(getNude);
+        superLipstickSoDramatic.addColour(rosyMauve);
+        productRepository.save(superLipstickSoDramatic);
 
 
     }

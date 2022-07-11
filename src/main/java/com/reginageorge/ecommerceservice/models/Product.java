@@ -1,5 +1,6 @@
 package com.reginageorge.ecommerceservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.joda.money.Money;
@@ -17,6 +18,7 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @NotNull
@@ -45,22 +47,23 @@ public class Product {
     @Column(name = "long_description")
     private String longDescription;
 
-    //TODO Rating class with rate and count
-   @Column(name = "rating")
-    private double rating;
+    @JsonIgnoreProperties({"product"})
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "rating_id", referencedColumnName = "id")
+    private Rating rating;
 
     @Column(name = "ingredient_list")
     @ElementCollection(targetClass=Ingredients.class)
     private List<Ingredients> ingredients;
 
-    //TODO need to transform into Color Class with name and image- investigate color API ask stuart
     @Column(name = "colours")
-    @ElementCollection(targetClass=String.class)
-    private List<String> colours;
+    @ElementCollection(targetClass=Colours.class)
+    private List<Colours> colours;
 
     public void addIngredient(Ingredients ingredient){
         this.ingredients.add(ingredient);
     }
 
-    public void addColour(String colour){this.colours.add(colour);}
+    public void addColour(Colours colour){this.colours.add(colour);}
+
 }

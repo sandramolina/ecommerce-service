@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Profile("!test")
-@Component
+//@Component
 public class CartSeeds implements ApplicationRunner {
 
     @Autowired
@@ -37,7 +37,6 @@ public class CartSeeds implements ApplicationRunner {
                 .image("https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg")
                 .shortDescription("This is the short one")
                 .longDescription("This is the long one")
-                .rating(4.5)
                 .ingredients(new ArrayList<>())
                 .colours(new ArrayList<>())
                 .build();
@@ -46,7 +45,7 @@ public class CartSeeds implements ApplicationRunner {
 
         CartItem cartItem = CartItem.builder()
                 .product(new Product())
-                .cartCount(2)
+                .count(2)
                 .build();
         cartItem.setProduct(superLipGloss);
         cartItemsRepository.save(cartItem);
