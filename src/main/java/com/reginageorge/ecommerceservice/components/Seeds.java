@@ -129,8 +129,7 @@ public class Seeds implements ApplicationRunner {
                 .ingredients(new ArrayList<>())
                 .colours(new ArrayList<>())
                 .build();
-
-
+        
         productRepository.save(superLipstickStar);
         superLipstickStar.setRating(rating1);
         superLipstickStar.addIngredient(fragrance);
@@ -154,12 +153,14 @@ public class Seeds implements ApplicationRunner {
                 .colours(new ArrayList<>())
                 .build();
 
-        //TODO how can I setup the same ingredient/color to different products
         productRepository.save(superLipstickSoDramatic);
         superLipstickSoDramatic.setRating(rating2);
         superLipstickSoDramatic.addIngredient(water);
         superLipstickSoDramatic.addIngredient(fragrance);
         superLipstickSoDramatic.addIngredient(cetearyl_alcohol);
+        superLipstickSoDramatic.addColour(red1);
+        superLipstickSoDramatic.addColour(blue1);
+        superLipstickSoDramatic.addColour(green1);
         superLipstickSoDramatic.addColour(hotPink);
         superLipstickSoDramatic.addColour(getNude);
         superLipstickSoDramatic.addColour(rosyMauve);

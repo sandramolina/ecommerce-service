@@ -57,7 +57,6 @@ public class Product {
     @JsonIgnoreProperties({"products"})
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @Column(name = "ingredient_list")
-//    @ElementCollection(targetClass=Ingredients.class)
     @JoinTable(
             name = "products_ingredients",
             joinColumns = {@JoinColumn(name = "product_id", nullable = false, updatable = false)},
@@ -65,8 +64,15 @@ public class Product {
     )
     private List<Ingredients> ingredients;
 
+    @ManyToMany
+    @JsonIgnoreProperties({"products"})
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @Column(name = "colours")
-    @ElementCollection(targetClass=Colours.class)
+    @JoinTable(
+            name = "products_colours",
+            joinColumns = {@JoinColumn(name = "product_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "colour_id", nullable = false, updatable = false)}
+    )
     private List<Colours> colours;
 
     public void addIngredient(Ingredients ingredient){
