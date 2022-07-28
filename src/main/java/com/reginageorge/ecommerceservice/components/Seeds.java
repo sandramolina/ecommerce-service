@@ -158,6 +158,7 @@ public class Seeds implements ApplicationRunner {
         productRepository.save(superLipstickSoDramatic);
         superLipstickSoDramatic.setRating(rating2);
         superLipstickSoDramatic.addIngredient(water);
+        superLipstickSoDramatic.addIngredient(fragrance);
         superLipstickSoDramatic.addIngredient(cetearyl_alcohol);
         superLipstickSoDramatic.addColour(hotPink);
         superLipstickSoDramatic.addColour(getNude);

@@ -3,6 +3,7 @@ package com.reginageorge.ecommerceservice.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 import org.joda.money.Money;
 
 import javax.persistence.*;
@@ -52,8 +53,16 @@ public class Product {
     @JoinColumn(name = "rating_id", referencedColumnName = "id")
     private Rating rating;
 
+    @ManyToMany
+    @JsonIgnoreProperties({"products"})
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @Column(name = "ingredient_list")
-    @ElementCollection(targetClass=Ingredients.class)
+//    @ElementCollection(targetClass=Ingredients.class)
+    @JoinTable(
+            name = "products_ingredients",
+            joinColumns = {@JoinColumn(name = "product_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "ingredient_id", nullable = false, updatable = false)}
+    )
     private List<Ingredients> ingredients;
 
     @Column(name = "colours")
