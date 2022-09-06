@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Profile("!test")
-@Component
+//@Component
 public class Seeds implements ApplicationRunner {
 
     @Autowired
@@ -196,16 +196,15 @@ public class Seeds implements ApplicationRunner {
                 .colours(new ArrayList<>())
                 .build();
 
-        //TODO once I fix the issue, assign colors and ingredients
+        //TODO assign colors and ingredients, and rating
         productRepository.save(superEyeshadow);
 
-        //TODO assign img to this product
         Product faceFoundation = Product.builder()
                 .title("Flawless Foundation")
                 .stock(1000)
                 .price(Money.parse("GBP 50.99"))
                 .productCategory("FACE")
-                .image("")
+                .image("https://raw.githubusercontent.com/sandramolina/assets/main/products/foundation-01.png")
                 .shortDescription("Looking flawless babe")
                 .longDescription("Your favorite feel-good, look-great eyeshadow, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades")
                 .rating(new Rating())
@@ -233,13 +232,12 @@ public class Seeds implements ApplicationRunner {
         //TODO once I fix the issue, assign colors and ingredients
         productRepository.save(concealer);
 
-        //TODO assign img to this product
         Product nailColor = Product.builder()
                 .title("Flawless Nail Color")
                 .stock(1000)
                 .price(Money.parse("GBP 9.99"))
                 .productCategory("NAILS")
-                .image("")
+                .image("https://raw.githubusercontent.com/sandramolina/assets/main/products/nails-01.png")
                 .shortDescription("Looking flawless babe but on the nails")
                 .longDescription("Your favorite feel-good, look-great nail color, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades")
                 .rating(new Rating())
@@ -256,7 +254,7 @@ public class Seeds implements ApplicationRunner {
                 .stock(1000)
                 .price(Money.parse("GBP 7.99"))
                 .productCategory("NAILS")
-                .image("")
+                .image("https://raw.githubusercontent.com/sandramolina/assets/main/products/nails-02.png")
                 .shortDescription("Looking flawless babe but on the nails")
                 .longDescription("Your favorite feel-good, look-great nail clipper, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades")
                 .rating(new Rating())
